@@ -218,6 +218,7 @@ public class fastMath : MonoBehaviour {
             if(stageCur > stageAmt)
             {
                 Debug.LogFormat("[Fast Math #{0}] Module passed!", _moduleId);
+                Audio.PlaySoundAtTransform("disarmed", Module.transform);
                 barControl.gameObject.transform.localScale = new Vector3(1, 1, 0f);
                 Screen.text = "";
                 Module.HandlePass();
@@ -225,6 +226,7 @@ public class fastMath : MonoBehaviour {
             }
             else
             {
+                Audio.PlaySoundAtTransform("passedStage", Module.transform);
                 generateStage(stageCur);
                 inputAns = 0;
                 digits = 0;
