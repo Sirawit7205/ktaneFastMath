@@ -94,8 +94,7 @@ public class fastMath : MonoBehaviour {
         stageCur = 1;
         inputAns = 0;
         digits = 0;
-        goBtn.material.color = new Color32(255, 195, 0, 255);
-        goText.color = Color.red;
+        goBtn.material.color = new Color32(229, 57, 53, 255);
         submit.GetComponent<MeshRenderer>().material.color = Color.gray;
         for (int i = 0; i < 10; i++)
         {
@@ -176,11 +175,10 @@ public class fastMath : MonoBehaviour {
         if (!_lightsOn || _isSolved || _pressedGo) return;
 
         goBtn.GetComponent<MeshRenderer>().material.color = Color.gray;
-        goText.color = Color.black;
-        submit.GetComponent<MeshRenderer>().material.color = new Color32(195, 72, 5, 255);
+        submit.GetComponent<MeshRenderer>().material.color = new Color32(229, 57, 53, 255);
         for (int i = 0; i < 10; i++)
         {
-            btn[i].GetComponent<MeshRenderer>().material.color = new Color32(195, 72, 5, 255);
+            btn[i].GetComponent<MeshRenderer>().material.color = new Color32(229, 57, 53, 255);
         }
 
         Debug.LogFormat("[Fast Math #{0}] Pressed GO! Let the madness begin!",_moduleId);
@@ -191,7 +189,6 @@ public class fastMath : MonoBehaviour {
     void handlePress(int num)
     {
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, btn[num].transform);
-        btn[num].AddInteractionPunch();
 
         if (!_lightsOn || _isSolved || digits > 1 || !_pressedGo ) return;
 

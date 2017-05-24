@@ -1041,7 +1041,7 @@ Transform:
   m_GameObject: {fileID: 1000012353249348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.53, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1.1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000010791877690}
@@ -1163,7 +1163,7 @@ Transform:
   m_GameObject: {fileID: 1000011942619974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.53, z: 0}
-  m_LocalScale: {x: 1, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 0.25, z: 1.1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000014121384070}
@@ -2747,7 +2747,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 108
+  m_FontSize: 100
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 853a19c92a5cb7544a19ef2f0d09cb9d, type: 3}
@@ -2816,7 +2816,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 853a19c92a5cb7544a19ef2f0d09cb9d, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 4294967295
 --- !u!102 &102000011405754542
 TextMesh:
   serializedVersion: 3
