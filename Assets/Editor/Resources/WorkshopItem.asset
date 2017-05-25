@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf2299c8864afe4ab42466f546ae20d, type: 3}
+  m_Name: WorkshopItem
+  m_EditorClassIdentifier: 
+  WorkshopPublishedFileID: 932617090
+  Title: Fast Math
+  Description: 'Gotta go fast!
+
+
+    moduleID: fastMath
+
+
+    Module ideas by LeGeND: http://steamcommunity.com/id/3PiCL3gend
+
+
+    Sound effects from http://www.freesfx.co.uk
+
+
+    HTML manual: https://ktane.timwi.de/HTML/Fast%20Math.htm
+
+    PDF manual: https://ktane.timwi.de/PDF/Fast%20Math.pdf'
+  PreviewImage: {fileID: 2800000, guid: 430068dcc7d3dfa4782cabb44779686d, type: 3}
+  Tags:
+  - Regular Module

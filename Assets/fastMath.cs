@@ -218,6 +218,11 @@ public class fastMath : MonoBehaviour {
                 Audio.PlaySoundAtTransform("disarmed", Module.transform);
                 barControl.gameObject.transform.localScale = new Vector3(1, 1, 0f);
                 Screen.text = "";
+                for (int i = 0; i < 10; i++)
+                {
+                    btn[i].GetComponent<MeshRenderer>().material.color = Color.gray;
+                }
+                submit.GetComponent<MeshRenderer>().material.color = Color.gray;
                 Module.HandlePass();
                 _isSolved = true;
             }
@@ -266,5 +271,21 @@ public class fastMath : MonoBehaviour {
             Debug.LogFormat("[Fast Math #{0}] JSON reading failed with error {1}, using default threshold.", _moduleId, e.Message);
             return 10;
         }
+    }
+
+    KMSelectable[] ProcessTwitchCommand(string command)
+    {
+        command = command.ToLowerInvariant().Trim();
+
+        if (command.Equals("go"))
+            return new[] { go };
+
+        else if (Regex.IsMatch(command, @"^submit +\d\d$"))
+        {
+            command = command.Substring(7).Trim();
+            return new[] { btn[int.Parse(command[0].ToString())], btn[int.Parse(command[1].ToString())], submit };
+        }
+
+        return null;
     }
 }
