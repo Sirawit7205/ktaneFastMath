@@ -203,7 +203,7 @@ public class fastMath : MonoBehaviour {
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, submit.transform);
         submit.AddInteractionPunch();
 
-        if (!_lightsOn || _isSolved || !_pressedGo ) return;
+        if (!_lightsOn || _isSolved || digits < 2 || !_pressedGo ) return;
 
         StopCoroutine("countdown");
         Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Submit: {2} Expected: {3}", _moduleId, stageCur, inputAns, ans);
@@ -245,7 +245,7 @@ public class fastMath : MonoBehaviour {
 
     void handleTimeout()
     {
-        Debug.LogFormat("[Fast Math #{0}] Timeout! Strike and reset!",_moduleId);
+        Debug.LogFormat("[Fast Math #{0}] Timeout! Strike and reset!", _moduleId);
         StopCoroutine("countdown");
         Module.HandleStrike();
         Init();
