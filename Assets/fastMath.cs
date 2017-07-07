@@ -153,14 +153,15 @@ public class fastMath : MonoBehaviour {
 
     IEnumerator countdown()
     {
-        float delta = 1f / threshold;
+        float smooth = 10;
+        float delta = 1f / (threshold * smooth);
         float current = 1f;
-        for (int i = 1; i <= threshold; i++)
+        for (int i = 1; i <= threshold * smooth; i++)
         {
             barControl.gameObject.transform.localScale = new Vector3(1, 1, current);
             bar.material.color = Color.Lerp(Color.red, Color.green, current);
             current -= delta;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f / smooth);
         }
         barControl.gameObject.transform.localScale = new Vector3(1, 1, 0f);
         handleTimeout();
