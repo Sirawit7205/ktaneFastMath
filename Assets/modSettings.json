@@ -1,4 +1,4 @@
 { 	 	
 	"countdownTime": 10,
-	"note": "Countdown time can be set between 5-30 seconds."
+	"note": "Countdown time can be set between 5-60 seconds."
 }

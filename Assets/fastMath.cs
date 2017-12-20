@@ -261,8 +261,8 @@ public class fastMath : MonoBehaviour {
             {
                 if (settings.countdownTime < 5)
                     return 5;
-                else if (settings.countdownTime > 30)
-                    return 30;
+                else if (settings.countdownTime > 60)
+                    return 60;
                 else return settings.countdownTime;
             }
             else return 10;
