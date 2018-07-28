@@ -6,7 +6,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using KMHelper;
 
-public class fastMath : MonoBehaviour {
+public class FastMath : MonoBehaviour {
 
     public class ModSettingsJSON
     {
@@ -27,7 +27,7 @@ public class fastMath : MonoBehaviour {
     private static int _moduleIdCounter = 1;
     private int _moduleId = 0;
 
-    private int[,] numberField = new int[13, 13] {
+    private readonly int[,] numberField = new int[13, 13] {
         {25, 11, 53, 97, 02, 42, 51, 97, 12, 86, 55, 73, 33},
         {54, 07, 32, 19, 84, 33, 27, 78, 26, 46, 09, 13, 58},
         {86, 37, 44, 01, 05, 26, 93, 49, 18, 69, 23, 40, 22},
@@ -42,7 +42,7 @@ public class fastMath : MonoBehaviour {
         {67, 30, 27, 71, 09, 11, 44, 37, 18, 40, 32, 15, 78},
         {13, 23, 26, 85, 92, 12, 73, 56, 81, 07, 75, 47, 99}
     };
-    private string letters = "ABCDEGKNPSTXZ";
+    private readonly string letters = "ABCDEGKNPSTXZ";
     private bool _isSolved = false, _lightsOn = false, _pressedGo = false;
     private int stageAmt, stageCur = 1, ans, inputAns = 0, threshold = 10, digits = 0;
 
@@ -56,12 +56,12 @@ public class fastMath : MonoBehaviour {
     {
         go.OnInteract += delegate ()
         {
-            goBtnHandle();
+            GoBtnHandle();
             return false;
         };
         submit.OnInteract += delegate ()
         {
-            ansChk();
+            AnsChk();
             return false;
         };
         for (int i = 0; i < 10; i++)
@@ -69,7 +69,7 @@ public class fastMath : MonoBehaviour {
             int j = i;
             btn[i].OnInteract += delegate ()
             {
-                handlePress(j);
+                HandlePress(j);
                 return false;
             };
         }
@@ -85,9 +85,9 @@ public class fastMath : MonoBehaviour {
     {
         stageAmt = Random.Range(3, 6);
         Debug.LogFormat("[Fast Math #{0}] This module will have {1} stages.", _moduleId, stageAmt);
-        threshold = findThreshold();
+        threshold = FindThreshold();
         Debug.LogFormat("[Fast Math #{0}] Threshold time set to {1} seconds.", _moduleId, threshold);
-        generateStage(1);
+        GenerateStage(1);
 
         //var reset
         _pressedGo = false;
@@ -102,7 +102,7 @@ public class fastMath : MonoBehaviour {
         }
     }
 
-    void generateStage(int num)
+    void GenerateStage(int num)
     {
         int randLeft = Random.Range(0, 13), randRight = Random.Range(0, 13);
 
@@ -151,7 +151,7 @@ public class fastMath : MonoBehaviour {
         Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Final answer => {2}", _moduleId, num, ans);
     }
 
-    IEnumerator countdown()
+    IEnumerator Countdown()
     {
         float smooth = 10;
         float delta = 1f / (threshold * smooth);
@@ -164,11 +164,11 @@ public class fastMath : MonoBehaviour {
             yield return new WaitForSeconds(1f / smooth);
         }
         barControl.gameObject.transform.localScale = new Vector3(1, 1, 0f);
-        handleTimeout();
+        HandleTimeout();
         yield return null;
     }
 
-    void goBtnHandle()
+    void GoBtnHandle()
     {
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, go.transform);
         go.AddInteractionPunch();
@@ -183,11 +183,11 @@ public class fastMath : MonoBehaviour {
         }
 
         Debug.LogFormat("[Fast Math #{0}] Pressed GO! Let the madness begin!",_moduleId);
-        StartCoroutine("countdown");
+        StartCoroutine("Countdown");
         _pressedGo = true;
     }
 
-    void handlePress(int num)
+    void HandlePress(int num)
     {
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, btn[num].transform);
 
@@ -199,14 +199,14 @@ public class fastMath : MonoBehaviour {
         digits++;
     }
 
-    void ansChk()
+    void AnsChk()
     {
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, submit.transform);
         submit.AddInteractionPunch();
 
         if (!_lightsOn || _isSolved || digits < 2 || !_pressedGo ) return;
 
-        StopCoroutine("countdown");
+        StopCoroutine("Countdown");
         Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Submit: {2} Expected: {3}", _moduleId, stageCur, inputAns, ans);
 
         if(inputAns == ans)
@@ -230,10 +230,10 @@ public class fastMath : MonoBehaviour {
             else
             {
                 Audio.PlaySoundAtTransform("passedStage", Module.transform);
-                generateStage(stageCur);
+                GenerateStage(stageCur);
                 inputAns = 0;
                 digits = 0;
-                StartCoroutine("countdown");
+                StartCoroutine("Countdown");
             }
         }
         else
@@ -244,15 +244,15 @@ public class fastMath : MonoBehaviour {
         }
     }
 
-    void handleTimeout()
+    void HandleTimeout()
     {
         Debug.LogFormat("[Fast Math #{0}] Timeout! Strike and reset!", _moduleId);
-        StopCoroutine("countdown");
+        StopCoroutine("Countdown");
         Module.HandleStrike();
         Init();
     }
 
-    int findThreshold()
+    int FindThreshold()
     {
         try
         {
