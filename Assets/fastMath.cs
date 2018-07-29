@@ -274,6 +274,10 @@ public class FastMath : MonoBehaviour {
         }
     }
 
+#pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"Press the GO! button with “!{0} go”. Submit the answer with “!{0} submit 05” (Must be two digits).";
+#pragma warning restore 414
+
     KMSelectable[] ProcessTwitchCommand(string command)
     {
         command = command.ToLowerInvariant().Trim();
