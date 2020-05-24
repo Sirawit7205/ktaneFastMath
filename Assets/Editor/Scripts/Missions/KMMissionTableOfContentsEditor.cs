@@ -47,19 +47,15 @@ public class KMMissionTableOfContentsEditor : Editor
         AssetImporter.GetAtPath(path).assetBundleName = AssetBundler.BUNDLE_FILENAME;
 
         EditorGUIUtility.PingObject(tableOfContents);
-
-        int numToCs = AssetDatabase.FindAssets("t:KMMissionTableOfContents").Length;
-        if (numToCs > 1)
-        {
-            Debug.LogWarningFormat("Project has {0} KMMissionTableOfContents. Only one table of contents per mod is supported!", numToCs);
-        }
     }
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("Title"));
+        var titleProperty = serializedObject.FindProperty("Title");
+        EditorGUILayout.PropertyField(titleProperty);
+        titleProperty.stringValue = titleProperty.stringValue.Trim();
 
         DrawTableOfContentsToolbar();
         DrawTableOfContents();
@@ -170,7 +166,7 @@ public class KMMissionTableOfContentsEditor : Editor
         EditorGUILayout.LabelField(string.Format("{0}.", sectionIndex + 1), GUILayout.Width(30));
 
         SerializedProperty titleProperty = sectionProperty.FindPropertyRelative("Title");
-        titleProperty.stringValue = EditorGUILayout.TextField(titleProperty.stringValue);
+        titleProperty.stringValue = EditorGUILayout.TextField(titleProperty.stringValue).Trim();
 
         GUILayout.FlexibleSpace();
 
