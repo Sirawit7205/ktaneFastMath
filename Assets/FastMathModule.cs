@@ -284,7 +284,7 @@ public class FastMathModule : MonoBehaviour
             answer += 50;
             Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Under 0 adjustment => {2}", _moduleId, num, answer);
         }
-        Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Final answer => {2}", _moduleId, num, answer);
+        Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Final answer => {2}", _moduleId, num, answer.ToString("D2"));
     }
 
     IEnumerator Countdown()
@@ -343,7 +343,7 @@ public class FastMathModule : MonoBehaviour
         if (!_lightsOn || _isSolved || digitsEntered < 2 || !_pressedGo) return;
 
         StopCoroutine("Countdown");
-        Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Submit: {2} Expected: {3}", _moduleId, stage, input, answer);
+        Debug.LogFormat("[Fast Math #{0}] <Stage {1}> Submit: {2} Expected: {3}", _moduleId, stage, input.ToString("D2"), answer.ToString("D2"));
 
         if (input == answer)
         {

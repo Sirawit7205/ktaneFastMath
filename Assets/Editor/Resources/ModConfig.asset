@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: fastMath
   title: Fast Math
+  author: 
   description: "Gotta go fast!\r\n\r\nmoduleID: fastMath\r\n\r\nModule ideas by LeGeND:
     http://steamcommunity.com/id/3PiCL3gend\r\n\r\nSound effects from http://www.freesfx.co.uk\r\n\r\nHTML
     manual: https://ktane.timwi.de/HTML/Fast%20Math.htm\r\nPDF manual: https://ktane.timwi.de/PDF/Fast%20Math.pdf"
-  version: 2.0
+  version: 3.0
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 430068dcc7d3dfa4782cabb44779686d, type: 3}
