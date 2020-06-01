@@ -46,9 +46,9 @@ public class FastMathModule : MonoBehaviour
     };
     private static readonly string _seed1_letters = "ABCDEGKNPSTXZ";
 
-    private static int[,] numberField;
-    private static string letters;
-    private static int offset;
+    private int[,] numberField;
+    private string letters;
+    private int offset;
 
     // Module execution
     private bool _isSolved = false, _lightsOn = false, _pressedGo = false;
